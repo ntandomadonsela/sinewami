@@ -1,0 +1,1251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sinewami Poultry — Eat Fresh, Buy Local</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --forest:    #1a4726;
+  --deep:      #0f2d18;
+  --leaf:      #2d7a3a;
+  --sage:      #5a9e65;
+  --straw:     #e8d5a3;
+  --cream:     #faf6ee;
+  --gold:      #c89b3c;
+  --white:     #ffffff;
+  --ink:       #1c1c1c;
+  --muted:     #6b7a6e;
+  --radius:    12px;
+}
+
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: var(--cream);
+  color: var(--ink);
+  overflow-x: hidden;
+}
+
+/* ── NOISE TEXTURE OVERLAY ── */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0.4;
+}
+
+/* ── NAVBAR ── */
+nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 18px 6%;
+  background: rgba(10, 24, 14, 0.92);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+  transition: padding 0.3s;
+}
+
+.nav-brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.nav-logo {
+  width: 40px; height: 40px;
+  background: var(--gold);
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 20px;
+}
+
+.nav-brand h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: 18px;
+  color: var(--white);
+  letter-spacing: 0.02em;
+}
+
+.nav-brand span {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 10px;
+  font-weight: 300;
+  color: var(--sage);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  display: block;
+  margin-top: -2px;
+}
+
+.nav-links { display: flex; gap: 32px; align-items: center; }
+
+.nav-links a {
+  color: rgba(255,255,255,0.7);
+  text-decoration: none;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  transition: color 0.2s;
+}
+
+.nav-links a:hover { color: var(--straw); }
+
+.nav-cta {
+  background: var(--gold) !important;
+  color: var(--deep) !important;
+  padding: 9px 20px;
+  border-radius: 6px;
+  font-weight: 600 !important;
+  transition: opacity 0.2s !important;
+}
+
+.nav-cta:hover { opacity: 0.85; }
+
+/* ── HERO ── */
+.hero {
+  min-height: 100vh;
+  background: var(--deep);
+  position: relative;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+}
+
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(135deg, rgba(15,45,24,0.97) 40%, rgba(26,71,38,0.85) 100%),
+    url('https://images.unsplash.com/photo-1548550023-2bdb3c5beed7?w=1400') center/cover no-repeat;
+}
+
+/* Decorative circle */
+.hero-circle {
+  position: absolute;
+  right: -80px; top: 50%;
+  transform: translateY(-50%);
+  width: 600px; height: 600px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(44,122,58,0.35) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.hero-ring {
+  position: absolute;
+  right: 60px; top: 50%;
+  transform: translateY(-50%);
+  width: 420px; height: 420px;
+  border-radius: 50%;
+  border: 1px solid rgba(200,155,60,0.25);
+  pointer-events: none;
+}
+
+.hero-ring2 {
+  position: absolute;
+  right: 20px; top: 50%;
+  transform: translateY(-50%);
+  width: 500px; height: 500px;
+  border-radius: 50%;
+  border: 1px solid rgba(200,155,60,0.1);
+  pointer-events: none;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  padding: 120px 6% 80px;
+  max-width: 680px;
+}
+
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(200,155,60,0.15);
+  border: 1px solid rgba(200,155,60,0.35);
+  color: var(--straw);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  padding: 7px 16px;
+  border-radius: 50px;
+  margin-bottom: 32px;
+  animation: fadeUp 0.8s ease both;
+}
+
+.hero-badge::before {
+  content: '';
+  width: 6px; height: 6px;
+  background: var(--gold);
+  border-radius: 50%;
+}
+
+.hero h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(44px, 6vw, 76px);
+  font-weight: 900;
+  color: var(--white);
+  line-height: 1.08;
+  margin-bottom: 24px;
+  animation: fadeUp 0.8s 0.15s ease both;
+}
+
+.hero h2 em {
+  font-style: italic;
+  color: var(--straw);
+}
+
+.hero p {
+  font-size: 17px;
+  font-weight: 300;
+  color: rgba(255,255,255,0.65);
+  line-height: 1.7;
+  max-width: 480px;
+  margin-bottom: 44px;
+  animation: fadeUp 0.8s 0.3s ease both;
+}
+
+.hero-actions {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  animation: fadeUp 0.8s 0.45s ease both;
+}
+
+.btn-primary {
+  background: var(--gold);
+  color: var(--deep);
+  padding: 15px 32px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 14px;
+  letter-spacing: 0.04em;
+  transition: transform 0.2s, box-shadow 0.2s;
+  box-shadow: 0 4px 20px rgba(200,155,60,0.35);
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 28px rgba(200,155,60,0.45);
+}
+
+.btn-outline {
+  background: transparent;
+  color: var(--white);
+  padding: 14px 28px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 14px;
+  border: 1px solid rgba(255,255,255,0.25);
+  letter-spacing: 0.04em;
+  transition: border-color 0.2s, color 0.2s;
+}
+
+.btn-outline:hover { border-color: var(--straw); color: var(--straw); }
+
+/* Hero stats strip */
+.hero-stats {
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  z-index: 2;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  border-top: 1px solid rgba(255,255,255,0.08);
+  background: rgba(10,24,14,0.6);
+  backdrop-filter: blur(8px);
+  animation: fadeUp 0.8s 0.6s ease both;
+}
+
+.stat-item {
+  padding: 28px 5%;
+  border-right: 1px solid rgba(255,255,255,0.08);
+}
+
+.stat-item:last-child { border-right: none; }
+
+.stat-num {
+  font-family: 'Playfair Display', serif;
+  font-size: 32px;
+  font-weight: 700;
+  color: var(--straw);
+  line-height: 1;
+}
+
+.stat-label {
+  font-size: 12px;
+  font-weight: 300;
+  color: rgba(255,255,255,0.45);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-top: 4px;
+}
+
+/* ── ABOUT ── */
+.about {
+  padding: 110px 6%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: center;
+  background: var(--cream);
+}
+
+.about-label {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--sage);
+  margin-bottom: 16px;
+}
+
+.about h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(32px, 3.5vw, 48px);
+  font-weight: 700;
+  color: var(--forest);
+  line-height: 1.2;
+  margin-bottom: 28px;
+}
+
+.about p {
+  font-size: 16px;
+  font-weight: 300;
+  color: var(--muted);
+  line-height: 1.8;
+  margin-bottom: 20px;
+}
+
+.values-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-top: 40px;
+}
+
+.value-item {
+  background: var(--white);
+  border: 1px solid rgba(26,71,38,0.1);
+  border-radius: var(--radius);
+  padding: 20px;
+  transition: border-color 0.2s, transform 0.2s;
+}
+
+.value-item:hover {
+  border-color: var(--sage);
+  transform: translateY(-3px);
+}
+
+.value-icon {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.value-item h4 {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--forest);
+  margin-bottom: 4px;
+}
+
+.value-item p {
+  font-size: 13px;
+  margin-bottom: 0;
+  line-height: 1.5;
+}
+
+/* About image side */
+.about-visual {
+  position: relative;
+}
+
+.about-img-wrap {
+  position: relative;
+  border-radius: 20px;
+  overflow: hidden;
+  aspect-ratio: 4/5;
+}
+
+.about-img-wrap img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.about-badge {
+  position: absolute;
+  bottom: 32px; left: -32px;
+  background: var(--forest);
+  color: var(--white);
+  border-radius: var(--radius);
+  padding: 20px 24px;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.2);
+}
+
+.about-badge p { margin: 0; font-size: 28px; font-family: 'Playfair Display', serif; font-weight: 700; color: var(--straw); line-height: 1; }
+.about-badge span { font-size: 12px; color: rgba(255,255,255,0.55); letter-spacing: 0.1em; text-transform: uppercase; }
+
+/* ── PRODUCTS ── */
+.products-section {
+  padding: 110px 6%;
+  background: var(--deep);
+  position: relative;
+  overflow: hidden;
+}
+
+.products-section::before {
+  content: '';
+  position: absolute;
+  top: -200px; right: -200px;
+  width: 600px; height: 600px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(44,122,58,0.2) 0%, transparent 70%);
+}
+
+.section-header {
+  text-align: center;
+  max-width: 560px;
+  margin: 0 auto 64px;
+}
+
+.section-label {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--sage);
+  margin-bottom: 16px;
+}
+
+.section-header h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(30px, 3vw, 44px);
+  color: var(--white);
+  line-height: 1.2;
+  margin-bottom: 16px;
+}
+
+.section-header p {
+  font-size: 15px;
+  font-weight: 300;
+  color: rgba(255,255,255,0.5);
+  line-height: 1.7;
+}
+
+.products-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 24px;
+}
+
+.product-card {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 16px;
+  padding: 36px 28px;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.3s, border-color 0.3s, background 0.3s;
+  cursor: default;
+}
+
+.product-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(90,158,101,0.08) 0%, transparent 60%);
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.product-card:hover {
+  transform: translateY(-6px);
+  border-color: rgba(200,155,60,0.3);
+  background: rgba(255,255,255,0.07);
+}
+
+.product-card:hover::before { opacity: 1; }
+
+.product-emoji {
+  font-size: 40px;
+  margin-bottom: 20px;
+  display: block;
+}
+
+.product-card h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 22px;
+  color: var(--white);
+  margin-bottom: 12px;
+}
+
+.product-card p {
+  font-size: 14px;
+  color: rgba(255,255,255,0.5);
+  line-height: 1.7;
+  font-weight: 300;
+}
+
+.product-tag {
+  display: inline-block;
+  margin-top: 20px;
+  background: rgba(200,155,60,0.15);
+  color: var(--straw);
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 5px 12px;
+  border-radius: 50px;
+  border: 1px solid rgba(200,155,60,0.2);
+}
+
+/* ── WHY US ── */
+.why {
+  padding: 110px 6%;
+  background: var(--white);
+}
+
+.why-inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: center;
+}
+
+.why h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(30px, 3vw, 44px);
+  color: var(--forest);
+  line-height: 1.2;
+  margin-bottom: 16px;
+}
+
+.why > .why-inner > div > p {
+  font-size: 16px;
+  font-weight: 300;
+  color: var(--muted);
+  line-height: 1.8;
+  margin-bottom: 40px;
+}
+
+.feature-list { display: flex; flex-direction: column; gap: 24px; }
+
+.feature-item {
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+}
+
+.feature-icon {
+  width: 48px; height: 48px;
+  min-width: 48px;
+  background: var(--cream);
+  border: 1px solid rgba(26,71,38,0.12);
+  border-radius: 12px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 22px;
+}
+
+.feature-item h4 {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--forest);
+  margin-bottom: 4px;
+}
+
+.feature-item p {
+  font-size: 14px;
+  color: var(--muted);
+  line-height: 1.6;
+  font-weight: 300;
+}
+
+.why-img {
+  border-radius: 20px;
+  overflow: hidden;
+  aspect-ratio: 1;
+  position: relative;
+}
+
+.why-img img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  display: block;
+  filter: brightness(0.92) saturate(1.1);
+}
+
+.why-img-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(15,45,24,0.6) 0%, transparent 50%);
+}
+
+.why-img-label {
+  position: absolute;
+  bottom: 24px; left: 24px;
+  color: var(--white);
+}
+
+.why-img-label strong {
+  display: block;
+  font-family: 'Playfair Display', serif;
+  font-size: 20px;
+}
+
+.why-img-label span {
+  font-size: 12px;
+  color: rgba(255,255,255,0.6);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+/* ── ORDER ── */
+.order-section {
+  padding: 110px 6%;
+  background: var(--cream);
+}
+
+.order-inner {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 80px;
+  align-items: start;
+}
+
+.order-info h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(30px, 3vw, 44px);
+  color: var(--forest);
+  line-height: 1.2;
+  margin-bottom: 20px;
+}
+
+.order-info p {
+  font-size: 16px;
+  font-weight: 300;
+  color: var(--muted);
+  line-height: 1.8;
+  margin-bottom: 40px;
+}
+
+.contact-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.contact-list li {
+  display: flex;
+  gap: 14px;
+  align-items: center;
+}
+
+.contact-icon {
+  width: 40px; height: 40px;
+  min-width: 40px;
+  background: var(--forest);
+  border-radius: 10px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 18px;
+}
+
+.contact-list li span {
+  font-size: 14px;
+  color: var(--muted);
+  font-weight: 300;
+}
+
+.contact-list li strong {
+  display: block;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--forest);
+}
+
+/* ORDER FORM */
+.order-form {
+  background: var(--white);
+  border-radius: 20px;
+  padding: 48px 40px;
+  border: 1px solid rgba(26,71,38,0.08);
+  box-shadow: 0 20px 80px rgba(0,0,0,0.06);
+}
+
+.order-form h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 24px;
+  color: var(--forest);
+  margin-bottom: 32px;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--forest);
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+  padding: 12px 16px;
+  border: 1px solid rgba(26,71,38,0.15);
+  border-radius: 8px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 14px;
+  font-weight: 300;
+  color: var(--ink);
+  background: var(--cream);
+  transition: border-color 0.2s, box-shadow 0.2s;
+  outline: none;
+  appearance: none;
+  -webkit-appearance: none;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  border-color: var(--leaf);
+  box-shadow: 0 0 0 3px rgba(45,122,58,0.1);
+  background: var(--white);
+}
+
+.form-group textarea { resize: vertical; min-height: 100px; }
+
+.select-wrap { position: relative; }
+
+.select-wrap::after {
+  content: '▾';
+  position: absolute;
+  right: 14px; top: 50%;
+  transform: translateY(-50%);
+  color: var(--muted);
+  pointer-events: none;
+  font-size: 12px;
+}
+
+.form-submit {
+  width: 100%;
+  padding: 16px;
+  background: var(--forest);
+  color: var(--white);
+  border: none;
+  border-radius: 8px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.2s;
+  margin-top: 8px;
+}
+
+.form-submit:hover {
+  background: var(--leaf);
+  transform: translateY(-1px);
+}
+
+.form-note {
+  font-size: 12px;
+  color: var(--muted);
+  text-align: center;
+  margin-top: 16px;
+  font-weight: 300;
+}
+
+/* ── FOOTER ── */
+footer {
+  background: var(--deep);
+  padding: 64px 6% 32px;
+}
+
+.footer-top {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr 1fr;
+  gap: 60px;
+  padding-bottom: 48px;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+  margin-bottom: 32px;
+}
+
+.footer-brand h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 22px;
+  color: var(--white);
+  margin-bottom: 12px;
+}
+
+.footer-brand p {
+  font-size: 14px;
+  color: rgba(255,255,255,0.4);
+  line-height: 1.7;
+  font-weight: 300;
+  max-width: 280px;
+}
+
+.footer-col h4 {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--sage);
+  margin-bottom: 20px;
+}
+
+.footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+
+.footer-col ul li a {
+  color: rgba(255,255,255,0.45);
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 300;
+  transition: color 0.2s;
+}
+
+.footer-col ul li a:hover { color: var(--straw); }
+
+.footer-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.footer-bottom p {
+  font-size: 12px;
+  color: rgba(255,255,255,0.25);
+  font-weight: 300;
+}
+
+/* ── ANIMATIONS ── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ── MOBILE ── */
+@media (max-width: 900px) {
+  .about, .why-inner, .order-inner {
+    grid-template-columns: 1fr;
+    gap: 48px;
+  }
+
+  .about-badge { left: 0; }
+
+  .footer-top {
+    grid-template-columns: 1fr;
+    gap: 36px;
+  }
+
+  .form-row { grid-template-columns: 1fr; }
+
+  .hero-stats { grid-template-columns: 1fr; }
+
+  .stat-item { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.08); }
+
+  .nav-links a:not(.nav-cta) { display: none; }
+
+  .values-grid { grid-template-columns: 1fr; }
+
+  .order-form { padding: 32px 24px; }
+
+  .footer-bottom { flex-direction: column; gap: 8px; text-align: center; }
+}
+</style>
+</head>
+
+<body>
+
+<!-- ── NAVBAR ── -->
+<nav>
+  <div class="nav-brand">
+    <div class="nav-logo">🐔</div>
+    <div>
+      <h1>Sinewami Poultry</h1>
+      <span>South Africa</span>
+    </div>
+  </div>
+  <div class="nav-links">
+    <a href="#about">About</a>
+    <a href="#products">Products</a>
+    <a href="#why">Why Us</a>
+    <a href="#order" class="nav-cta">Order Now</a>
+  </div>
+</nav>
+
+
+<!-- ── HERO ── -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-circle"></div>
+  <div class="hero-ring"></div>
+  <div class="hero-ring2"></div>
+
+  <div class="hero-content">
+    <div class="hero-badge">South African Farm-Fresh Poultry</div>
+    <h2>Eat <em>Fresh.</em><br>Buy Local.</h2>
+    <p>Premium broiler chickens and poultry products grown with bio-security excellence, delivered to your community with care and consistency.</p>
+    <div class="hero-actions">
+      <a href="#order" class="btn-primary">Place an Order</a>
+      <a href="#products" class="btn-outline">Our Products</a>
+    </div>
+  </div>
+
+  <div class="hero-stats">
+    <div class="stat-item">
+      <div class="stat-num">100%</div>
+      <div class="stat-label">Farm Raised</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">A+</div>
+      <div class="stat-label">Bio-Security Rated</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">48h</div>
+      <div class="stat-label">Order Turnaround</div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ── ABOUT ── -->
+<section id="about" class="about">
+  <div class="reveal">
+    <div class="about-label">Our Story</div>
+    <h2>Rooted in Community, Built on Integrity</h2>
+    <p>Sinewami Poultry is a South African poultry production business focused on delivering high-quality broiler chickens and poultry products to local communities, retailers, and institutions.</p>
+    <p>Our operations are built around strong bio-security practices, reliable production systems, and a commitment to consistency in every cycle — because our customers deserve nothing less.</p>
+
+    <div class="values-grid">
+      <div class="value-item">
+        <div class="value-icon">🤝</div>
+        <h4>Integrity</h4>
+        <p>Honest operations at every level of our business.</p>
+      </div>
+      <div class="value-item">
+        <div class="value-icon">⭐</div>
+        <h4>Quality</h4>
+        <p>Unwavering commitment to premium production standards.</p>
+      </div>
+      <div class="value-item">
+        <div class="value-icon">💡</div>
+        <h4>Innovation</h4>
+        <p>Continuous improvement in all our farming practices.</p>
+      </div>
+      <div class="value-item">
+        <div class="value-icon">🌍</div>
+        <h4>Community</h4>
+        <p>Empowering local communities through sustainable business.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="about-visual reveal">
+    <div class="about-img-wrap">
+      <img src="https://images.unsplash.com/photo-1548550023-2bdb3c5beed7?w=800" alt="Our farm" loading="lazy">
+    </div>
+    <div class="about-badge">
+      <p>Est.</p>
+      <span>2020 · Limpopo, SA</span>
+    </div>
+  </div>
+</section>
+
+
+<!-- ── PRODUCTS ── -->
+<section id="products" class="products-section">
+  <div class="section-header reveal">
+    <div class="section-label">What We Offer</div>
+    <h2>Fresh Products, Every Cycle</h2>
+    <p>From live birds to organic manure, our range is built to serve households, retailers, and agricultural partners alike.</p>
+  </div>
+
+  <div class="products-grid">
+    <div class="product-card reveal">
+      <span class="product-emoji">🐔</span>
+      <h3>Live Chickens</h3>
+      <p>Healthy, farm-raised broiler chickens available in bulk or single purchase, raised under strict bio-security protocols.</p>
+      <div class="product-tag">Bulk Available</div>
+    </div>
+    <div class="product-card reveal">
+      <span class="product-emoji">🍗</span>
+      <h3>Slaughtered Chickens</h3>
+      <p>Fresh, high-quality processed chickens ready for consumption. Hygienic processing you can trust.</p>
+      <div class="product-tag">Ready to Cook</div>
+    </div>
+    <div class="product-card reveal">
+      <span class="product-emoji">🥚</span>
+      <h3>Farm Eggs</h3>
+      <p>Fresh farm eggs produced under controlled and hygienic conditions — nutritious, consistent and locally sourced.</p>
+      <div class="product-tag">Daily Fresh</div>
+    </div>
+    <div class="product-card reveal">
+      <span class="product-emoji">🌱</span>
+      <h3>Chicken Manure</h3>
+      <p>Organic manure suitable for farming and gardening. A natural, nutrient-rich by-product of our farm operations.</p>
+      <div class="product-tag">Organic</div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ── WHY US ── -->
+<section id="why" class="why">
+  <div class="why-inner">
+    <div class="reveal">
+      <div class="about-label">Why Sinewami</div>
+      <h2>Farm Standards You Can Trust</h2>
+      <p>We don't just raise chickens — we uphold a promise of quality, safety, and accountability in every batch we deliver.</p>
+
+      <div class="feature-list">
+        <div class="feature-item">
+          <div class="feature-icon">🛡️</div>
+          <div>
+            <h4>Certified Bio-Security</h4>
+            <p>Our facility follows rigorous bio-security protocols to ensure disease-free, safe produce at all times.</p>
+          </div>
+        </div>
+        <div class="feature-item">
+          <div class="feature-icon">📦</div>
+          <div>
+            <h4>Reliable Supply Chain</h4>
+            <p>Consistent production cycles mean you always get what you need, when you need it.</p>
+          </div>
+        </div>
+        <div class="feature-item">
+          <div class="feature-icon">🤝</div>
+          <div>
+            <h4>Community-First Pricing</h4>
+            <p>Fair, transparent pricing designed to support local families, schools, and retailers.</p>
+          </div>
+        </div>
+        <div class="feature-item">
+          <div class="feature-icon">🌿</div>
+          <div>
+            <h4>Sustainable Practices</h4>
+            <p>From feed to waste management, we operate with environmental responsibility in mind.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="why-img reveal">
+      <img src="https://images.unsplash.com/photo-1444858291040-58f756a3bdd6?w=800" alt="Our chickens" loading="lazy">
+      <div class="why-img-overlay"></div>
+      <div class="why-img-label">
+        <strong>Farm-to-Table</strong>
+        <span>Limpopo, South Africa</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ── ORDER ── -->
+<section id="order" class="order-section">
+  <div class="order-inner">
+    <div class="order-info reveal">
+      <div class="about-label">Get In Touch</div>
+      <h2>Ready to Place Your Order?</h2>
+      <p>Fill in the form and we'll contact you within 24 hours to confirm availability, pricing, and delivery details.</p>
+
+      <ul class="contact-list">
+        <li>
+          <div class="contact-icon">📍</div>
+          <div>
+            <strong>Location</strong>
+            <span>Limpopo Province, South Africa</span>
+          </div>
+        </li>
+        <li>
+          <div class="contact-icon">📞</div>
+          <div>
+            <strong>Phone</strong>
+            <span>+27 (0)XX XXX XXXX</span>
+          </div>
+        </li>
+        <li>
+          <div class="contact-icon">✉️</div>
+          <div>
+            <strong>Email</strong>
+            <span>orders@sinewamipoulry.co.za</span>
+          </div>
+        </li>
+        <li>
+          <div class="contact-icon">🕐</div>
+          <div>
+            <strong>Business Hours</strong>
+            <span>Mon–Sat: 07:00 – 17:00</span>
+          </div>
+        </li>
+      </ul>
+    </div>
+
+    <div class="order-form reveal">
+      <h3>Place an Order</h3>
+      <form action="https://formspree.io/f/your-formspree-id" method="POST">
+        <div class="form-row">
+          <div class="form-group">
+            <label for="name">Full Name</label>
+            <input type="text" id="name" name="name" placeholder="Jane Sithole" required>
+          </div>
+          <div class="form-group">
+            <label for="phone">Phone Number</label>
+            <input type="tel" id="phone" name="phone" placeholder="+27 82 000 0000" required>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="email">Email Address</label>
+          <input type="email" id="email" name="email" placeholder="jane@example.com">
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="product">Product</label>
+            <div class="select-wrap">
+              <select id="product" name="product" required>
+                <option value="" disabled selected>Select a product</option>
+                <option>Live Chickens</option>
+                <option>Slaughtered Chickens</option>
+                <option>Farm Eggs</option>
+                <option>Chicken Manure</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="quantity">Quantity</label>
+            <input type="number" id="quantity" name="quantity" placeholder="e.g. 50" min="1">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="message">Additional Notes</label>
+          <textarea id="message" name="message" placeholder="Delivery address, preferred date, special requests..."></textarea>
+        </div>
+
+        <button type="submit" class="form-submit">Submit Order Request →</button>
+        <p class="form-note">🔒 Your information is private and will only be used to process your order.</p>
+      </form>
+    </div>
+  </div>
+</section>
+
+
+<!-- ── FOOTER ── -->
+<footer>
+  <div class="footer-top">
+    <div class="footer-brand">
+      <h2>Sinewami Poultry</h2>
+      <p>High-quality poultry products produced with care, integrity and bio-security excellence for South African communities.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Navigation</h4>
+      <ul>
+        <li><a href="#about">About Us</a></li>
+        <li><a href="#products">Our Products</a></li>
+        <li><a href="#why">Why Choose Us</a></li>
+        <li><a href="#order">Place an Order</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Products</h4>
+      <ul>
+        <li><a href="#order">Live Chickens</a></li>
+        <li><a href="#order">Slaughtered Chickens</a></li>
+        <li><a href="#order">Farm Eggs</a></li>
+        <li><a href="#order">Chicken Manure</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2026 Sinewami Poultry · Limpopo, South Africa · Eat Fresh, Buy Local.</p>
+    <p style="color:rgba(255,255,255,0.2); font-size:11px;">Designed with ❤️ for local communities</p>
+  </div>
+</footer>
+
+
+<script>
+// Scroll reveal
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach((entry, i) => {
+    if (entry.isIntersecting) {
+      entry.target.style.transitionDelay = (i * 0.07) + 's';
+      entry.target.classList.add('visible');
+      observer.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.12 });
+
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+// Smooth active nav highlight
+const sections = document.querySelectorAll('section[id]');
+const navLinks = document.querySelectorAll('.nav-links a[href^="#"]');
+
+window.addEventListener('scroll', () => {
+  let current = '';
+  sections.forEach(s => {
+    if (window.scrollY >= s.offsetTop - 100) current = s.getAttribute('id');
+  });
+  navLinks.forEach(a => {
+    a.style.color = a.getAttribute('href') === '#' + current
+      ? 'var(--straw)'
+      : 'rgba(255,255,255,0.7)';
+  });
+});
+
+// Form submit feedback
+const form = document.querySelector('form');
+const submitBtn = form.querySelector('.form-submit');
+form.addEventListener('submit', (e) => {
+  submitBtn.textContent = 'Sending…';
+  submitBtn.style.opacity = '0.7';
+});
+</script>
+
+</body>
+</html>
