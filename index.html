@@ -66,11 +66,11 @@ nav {
 }
 
 .nav-logo {
-  width: 40px; height: 40px;
-  background: var(--gold);
-  border-radius: 50%;
-  display: flex; align-items: center; justify-content: center;
-  font-size: 20px;
+  width: 55px;
+  height: 55px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .nav-brand h1 {
@@ -131,7 +131,7 @@ nav {
   inset: 0;
   background:
     linear-gradient(135deg, rgba(15,45,24,0.97) 40%, rgba(26,71,38,0.85) 100%),
-    url('https://images.unsplash.com/photo-1548550023-2bdb3c5beed7?w=1400') center/cover no-repeat;
+    url('https://www.aces.edu/wp-content/uploads/2018/11/GettyImages-129273960.jpg') center/cover no-repeat;
 }
 
 /* Decorative circle */
@@ -902,7 +902,9 @@ footer {
 <!-- ── NAVBAR ── -->
 <nav>
   <div class="nav-brand">
-    <div class="nav-logo">🐔</div>
+    <div class="nav-logo">
+  <img src="logo.png" alt="Sinewami Poultry Logo" style="width:100%; height:100%; object-fit:contain;">
+</div>
     <div>
       <h1>Sinewami Poultry</h1>
       <span>South Africa</span>
@@ -989,7 +991,7 @@ footer {
     </div>
     <div class="about-badge">
       <p>Est.</p>
-      <span>2020 · Limpopo, SA</span>
+      <span>2020 · Mpumalanga, SA</span>
     </div>
   </div>
 </section>
@@ -1073,11 +1075,13 @@ footer {
     </div>
 
     <div class="why-img reveal">
-      <img src="https://images.unsplash.com/photo-1444858291040-58f756a3bdd6?w=800" alt="Our chickens" loading="lazy">
+      <img src="https://www.poultryworld.net/app/uploads/2022/03/IMG_SApoultry-848x565.jpg" alt="Our chickens" loading="lazy">
       <div class="why-img-overlay"></div>
       <div class="why-img-label">
         <strong>Farm-to-Table</strong>
-        <span>Limpopo, South Africa</span>
+        <span>R544 Kwamhlanga, Mpumalanga, South Africa<br>
+Head Office: Rondebosch, Middelburg, Mpumalanga<br>
+Central Office: Pretoria Road, Willow Park Manor, Gauteng</span>
       </div>
     </div>
   </div>
@@ -1097,28 +1101,28 @@ footer {
           <div class="contact-icon">📍</div>
           <div>
             <strong>Location</strong>
-            <span>Limpopo Province, South Africa</span>
+            <span>Mpumalanga Province, South Africa</span>
           </div>
         </li>
         <li>
           <div class="contact-icon">📞</div>
           <div>
             <strong>Phone</strong>
-            <span>+27 (0)XX XXX XXXX</span>
+            <span>+27 (0)83 646 6193</span>
           </div>
         </li>
         <li>
           <div class="contact-icon">✉️</div>
           <div>
             <strong>Email</strong>
-            <span>orders@sinewamipoulry.co.za</span>
+            <span>admin@sinewamipoulry.co.za</span>
           </div>
         </li>
         <li>
           <div class="contact-icon">🕐</div>
           <div>
             <strong>Business Hours</strong>
-            <span>Mon–Sat: 07:00 – 17:00</span>
+            <span>Mon–Sat: 09:00 – 17:00</span>
           </div>
         </li>
       </ul>
@@ -1126,7 +1130,7 @@ footer {
 
     <div class="order-form reveal">
       <h3>Place an Order</h3>
-      <form action="https://formspree.io/f/your-formspree-id" method="POST">
+      <form action="https://formspree.io/f/xkoygglg" method="POST">
         <div class="form-row">
           <div class="form-group">
             <label for="name">Full Name</label>
@@ -1170,6 +1174,7 @@ footer {
         <button type="submit" class="form-submit">Submit Order Request →</button>
         <p class="form-note">🔒 Your information is private and will only be used to process your order.</p>
       </form>
+      <input type="hidden" name="_subject" value="New Order - Sinewami Poultry">
     </div>
   </div>
 </section>
